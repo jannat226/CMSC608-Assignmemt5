@@ -1,0 +1,74 @@
+---
+title: "Customer Shopping Database Report"
+author: "Jannat"
+format: html
+---
+
+# **Introduction**
+This report documents the **Customer_shopping** database.
+
+## **1. Database Structure**
+### **Chen Diagram**
+![](chen_Diagram.png)
+
+### **Crow’s Foot Diagram**
+![](Crows_Foot_Diagram.png)
+
+## **2. Sample Data**
+Below is the sample data fetched from the `Customers` table:
+
+```{python}
+import mysql.connector
+import pandas as pd
+import os
+from dotenv import load_dotenv
+
+# Load environment variables for database credentials
+load_dotenv()
+
+
+# Establish database connection
+conn = mysql.connector.connect(
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
+    database=os.getenv("DB_NAME")
+)
+![](Output1.png)
+# Query to fetch first 5 records from Customers table
+query = "SELECT * FROM Customers LIMIT 5"
+df = pd.read_sql(query, conn)
+![](Output2.png)
+# Close connection
+conn.close()
+![](Output1.png)
+# Show the fetched data
+df
+This is the result of the query that selects the first 5 customers from the Customers table:
+
+plaintext
+Copy
+Edit
+customer_id           name                email         phone
+0            1  Alice Johnson    alice@example.com  123-456-7890
+1            2      Bob Smith      bob@example.com  234-567-8901
+2            3  Alice Johnson    alice@example.com  123-456-7890
+3            4      Bob Smith      bob@example.com  234-567-8901
+4            5  Charlie Brown  charlie@example.com  345-678-9012
+# Load database credentials
+load_dotenv()
+![](Output3.png)
+# Connect to MySQL
+conn = mysql.connector.connect(
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
+    database=os.getenv("DB_NAME")
+)
+
+# Fetch first 5 records from Customers table
+query = "SELECT * FROM Customers LIMIT 5"
+df = pd.read_sql(query, conn)
+conn.close()
+![](Output5.png)
+df
