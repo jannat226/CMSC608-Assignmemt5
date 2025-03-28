@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jannat">
 
-<title>Customer Shopping Database Report</title>
+<title>report</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -44,63 +43,17 @@ ul.task-list li input[type="checkbox"] {
 
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Customer Shopping Database Report</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jannat </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="introduction" class="level1">
-<h1><strong>Introduction</strong></h1>
-<p>This report documents the <strong>Customer_shopping</strong> database.</p>
-<section id="database-structure" class="level2">
-<h2 class="anchored" data-anchor-id="database-structure"><strong>1. Database Structure</strong></h2>
-<section id="chen-diagram" class="level3">
-<h3 class="anchored" data-anchor-id="chen-diagram"><strong>Chen Diagram</strong></h3>
-<p><img src="chen_Diagram.png" class="img-fluid"></p>
+<p>import pandas as pd import qgrid</p>
+<section id="sample-dataframe" class="level1">
+<h1>Sample DataFrame</h1>
+<p>data = { “Customer ID”: [1, 2, 3, 4, 5], “Name”: [“Alice Johnson”, “Bob Smith”, “Alice Johnson”, “Bob Smith”, “Charlie Brown”], “Email”: [“alice@example.com”, “bob@example.com”, “alice@example.com”, “bob@example.com”, “charlie@example.com”], “Phone”: [“123-456-7890”, “234-567-8901”, “123-456-7890”, “234-567-8901”, “345-678-9012”] } df = pd.DataFrame(data)</p>
 </section>
-<section id="crows-foot-diagram" class="level3">
-<h3 class="anchored" data-anchor-id="crows-foot-diagram"><strong>Crow’s Foot Diagram</strong></h3>
-<p><img src="Crows_Foot_Diagram.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="sample-data" class="level2">
-<h2 class="anchored" data-anchor-id="sample-data"><strong>2. Sample Data</strong></h2>
-<p>Below is the sample data fetched from the <code>Customers</code> table:</p>
-<p>import mysql.connector import pandas as pd import os from dotenv import load_dotenv</p>
-</section>
-</section>
-<section id="load-environment-variables-for-database-credentials" class="level1">
-<h1>Load environment variables for database credentials</h1>
-<p>load_dotenv()</p>
-</section>
-<section id="establish-database-connection" class="level1">
-<h1>Establish database connection</h1>
-<p>conn = mysql.connector.connect( host=os.getenv(“DB_HOST”), user=os.getenv(“DB_USER”), password=os.getenv(“DB_PASSWORD”), database=os.getenv(“DB_NAME”) ) <img src="Output1.png" class="img-fluid"> # Query to fetch first 5 records from Customers table query = “SELECT * FROM Customers LIMIT 5” df = pd.read_sql(query, conn) <img src="Output2.png" class="img-fluid"> # Close connection conn.close() <img src="Output1.png" class="img-fluid"> # Show the fetched data df This is the result of the query that selects the first 5 customers from the Customers table:</p>
-<p>plaintext Copy Edit customer_id name email phone 0 1 Alice Johnson alice@example.com 123-456-7890 1 2 Bob Smith bob@example.com 234-567-8901 2 3 Alice Johnson alice@example.com 123-456-7890 3 4 Bob Smith bob@example.com 234-567-8901 4 5 Charlie Brown charlie@example.com 345-678-9012 # Load database credentials load_dotenv() <img src="Output3.png" class="img-fluid"> # Connect to MySQL conn = mysql.connector.connect( host=os.getenv(“DB_HOST”), user=os.getenv(“DB_USER”), password=os.getenv(“DB_PASSWORD”), database=os.getenv(“DB_NAME”) )</p>
-</section>
-<section id="fetch-first-5-records-from-customers-table" class="level1">
-<h1>Fetch first 5 records from Customers table</h1>
-<p>query = “SELECT * FROM Customers LIMIT 5” df = pd.read_sql(query, conn) conn.close() <img src="Output1.png" class="img-fluid"> df</p>
+<section id="display-interactive-table" class="level1">
+<h1>Display interactive table</h1>
+<p>qgrid_widget = qgrid.show_grid(df, show_toolbar=True) qgrid_widget</p>
 </section>
 
 </main>
